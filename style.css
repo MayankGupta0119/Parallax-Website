@@ -1,0 +1,104 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+#wrapper {
+  height: 100vh;
+  overflow-x: hidden; /*right direction me scrolling nhi hoga esse*/
+  overflow-y: auto; /*kyuki y direction me move krna hai*/
+  perspective: 10px; /*to enable 3d view
+  by defining prespective we declare the distance between our eyes and the z axis
+  the value we pass dosen't matter*/
+}
+/* now to overlap those two images, we will declare their positon as absolute
+and container ka position as relative
+since the defination for absolute is , it will be placed according to the nearest
+non-static ansector, images ka ansector hua container ab bydefault wo static hai, therefore
+non- static krne ke lye we declare it as relative */
+.container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  transform-style: preserve-3d;
+  /* jaha pe bhi 3d effect chahiye hota hai waha transformstyle: preserve-3d use krna hota hai,
+    nhi to pura effect 2d jaisa aayega */
+  z-index: -1;
+  /* z index overlapping ke liye hoti hai by default z index 0 hota hai
+    suppose do div hai div1 and div2 div1 ka z index hai -1 and div2 ka z index hai -2
+    therefore div1 div2 ke upper dhikega */
+}
+.background_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transform: translateZ(-40px) scale(5.1);
+}
+.foreground_img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transform: translateX(-20px) translateZ(-20px) scale(3);
+}
+#text {
+  font-family: "Caprasimo", cursive;
+  font-family: "Cherry Bomb One", cursive;
+  font-family: "Pacifico", cursive;
+  font-family: "Tilt Prism", cursive;
+  font-size: 100px;
+  color: whitesmoke;
+  text-shadow: 0 0 15px black;
+}
+.sec {
+  background-color: black;
+  color: white;
+  padding: 5rem 0;
+}
+/* The background-image property is used for setting background images of elements, often for decorative purposes, and it's controlled through CSS.
+The <img> tag is used to display images directly in the content of a webpage, such as photos or illustrations, and it's part of the HTML structure. */
+.bg {
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  /* esse background image fixed rhegi and baki jo uske uper hai wo scroll krega */
+  height: 500px;
+  background-size: cover;
+  /* esse jo background image hai teek se aling and fit hojyega page ko pure trike se cover krte huai
+  this is important to use, nhi to kuch image zoomed rhegi nhi to kuch thik se align nhi rhega */
+  background-position: center;
+  /* image aligned at center (important) */
+}
+.bg1 {
+  background-image: url(biking.png);
+  /* to set image as background not as a main part of the structure
+  therefore we use background image tag not image tag */
+}
+.bg2 {
+  background-image: url(surfing.jpg);
+}
+.bg3 {
+  background-image: url(paraglide.jpg);
+}
+h2 {
+  font-size: 5rem;
+  padding: 0 10rem;
+}
+.text {
+  font-size: 1.5rem;
+  padding: 0 10rem;
+  margin: 5rem;
+}
+.desc {
+  position: absolute;
+  /* esse ye bg ke upper aayega, esliye bg ko relative kiya hai */
+  text-shadow: 0 0 2px black;
+  padding: 0.5rem 2.5rem;
+  top: 30%;
+}
